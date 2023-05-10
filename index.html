@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заголовок страницы</title>
+    <link rel="stylesheet" href="./styles/style.css">
+
+    <meta property="og:title" content="Стихотворение от автора">
+    <meta property="og:description" content="Коротко и смешно">
+    <meta property="og:image" content="https://example.com/image.jpg">
+    <meta property="og:url" content="https://example.com/">
+</head>
+<body>
+    <header>
+        <h1>Это мой сайт</h1>
+        <p>Он хороший</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Эта страница</a></li>
+                <li><a href="https://vk.com/mc_centrist">Постучаться к автору</a></li>
+            </ul>
+        </nav>
+    </header>
+    <footer>
+        <p>Брюшков Никита ©</p>
+    </footer>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>My title</title>
+        <link rel="stylesheet" type="text/css" href="main.css">
+    </head>
+    <body>
+        <div class="main">
+            <h2>JavaScript Confirm Box</h2>
+            <button class="btn" onclick="myFunction()">Try it</button>
+            <ul id="demo">
+            </ul>
+        </div>
+        <script>
+            function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+            function myFunction() {
+                (async () => {
+                    let response = await fetch('https://kav-api.kovalev.team/servodrive/lastActualData?servoDriveId=1');
+                    let el = document.getElementById('demo')
+                    el.innerHTML = ""
+                    let text = await response.text(); // прочитать тело ответа как текст
+                    for (const [key, value] of Object.entries(JSON.parse(text)[0])) {
+                        const newEl = document.createElement("li")
+                        newEl.appendChild(document.createTextNode(`${key}: ${value}`))
+                        el.appendChild(newEl)
+                        await sleep(100)
+                    }
+                })()
+            }
+        </script>
+    </body>
+</body>
+<script>
+    if (confirm('Доброго времени суток, у этой страницы есть к вам вопрос, вы готовы ответить?')) {
+        var numer = ['истина, идеальное, всеобщие вечные, бесконечные и беспричинно безвозмездные благо, любовь, счастье',
+                    'мужество, логика, независимость, самостоятельность, индивидуализм, смелость, решительность, изобретательность',
+                    'женственность, чувствительность, интуиция, близость, поддержка, доверие, сотрудничество, мир, дипломатичность',
+                    'детское начало, дружба, радость, позитивность, оптимизм, удача, везение, романтика, общительность, беззаботность, творчество',
+                    'энергия земли, постоянство, однообразие, практичность, упорство, надежность, терпеливость, усердие, стойкость',
+                    'свобода, движение, разнообразие, приключения, путешествия, риск, опасность, страх',
+                    'семья, любовь, доброта, забота, переживания, обида, гармония, равновесие, баланс',
+                    'нематериальное, духовность, загадочное, познание, учеба, расставание, грусть, одиночество, тишина, спокойствие',
+                    'физическое, материальное, деньги, карьера, призвание, успех, влияние, сила, власть, судьба, справедливость, месть, карма',
+                    'доброжелательность, благородство, прощение, раскаяние, благодарность, исцеление, щедрость, великодушие']
+        var name = prompt('Как вас зовут?', 'Введите сюда ваше имя');
+        var group = prompt('Из какой вы учебной группы?', 'Введите сюда вашу группу');
+        var digit = prompt('Какая ваша любимая цифра(от 0 до 9)?', 'Введите его сюда');
+        var text1 = "Приятно познакомиться, " + name + " из группы " + group + "!";
+        var text2 = digit + " не цифра!(";
+        if (isNumeric(digit[0])){
+            text2 = "Нумерологическое значение числа " + digit[0] + ": " + numer[Number(digit[0])];
+        }
+        alert(text1, text2)
+    }
+    alert("Спасибо, что уделили время")
+</script>
+</html>
