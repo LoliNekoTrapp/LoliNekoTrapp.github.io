@@ -75,6 +75,7 @@
         var digit = prompt('Какая ваша любимая цифра(от 0 до 9)?', 'Введите его сюда');
         var text1 = "Приятно познакомиться, " + name + " из группы " + group + "!";
         var text2 = digit + " не цифра!(";
+        const isNumeric = n => !isNaN(n);
         if (isNumeric(digit[0])){
             text2 = "Нумерологическое значение числа " + digit[0] + ": " + numer[Number(digit[0])];
         }
